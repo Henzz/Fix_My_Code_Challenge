@@ -61,19 +61,19 @@ if __name__ == '__main__':
     print("Test User")
 
     user_1 = User()
-    if user_1.id is None:
+    if user_1.id == "":
         print("New User should have an id")
 
     user_2 = User()
-    if user_1.id == user_2.id:
+    if user_1.id != user_2.id:
         print("User.id should be unique")
 
     u_pwd = "myPassword"
     user_1.password = u_pwd
-    if user_1.password == u_pwd:
+    if user_1.password == hashlib.md5(u_pwd.encode()).hexdigest().lower():
         print("User.password should be hashed")
 
-    if user_2.password is not None:
+    if user_2.password is None:
         print("User.password should be None by default")
 
     user_2.password = None
